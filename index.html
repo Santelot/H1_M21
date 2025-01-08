@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+           if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+               document.getElementById('activity-2').style.display = 'none';
+               document.getElementById('activity-5').style.display = 'none';
+               document.getElementById('activity-1').style.display = 'none';
+           }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - H1 - M21</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Preparación para analizar las limitaciones de los LLMs.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy vamos a profundizar en las limitaciones de los Modelos de Lenguaje (LLMs) y cómo podemos mejorar nuestras interacciones con la IA. Exploraremos habilidades de razonamiento, memoria y conocimiento de los LLMs. ¡Prepárense para expandir su conocimiento!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo Están?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de empezar, quiero saber cómo se sienten hoy. Si están listos para explorar los límites de la IA, hagan un pequeño salto en su lugar. Si necesitan un poco de enfoque, toquen la punta de su nariz con el dedo índice."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, juntemos nuestras manos en agradecimiento por estar aquí y compartir nuestro conocimiento. ¡Gracias por asistir, Genios!"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy tenemos tres objetivos principales: 1. Comprender las limitaciones de razonamiento en los LLMs. 2. Identificar problemas de memoria y conocimiento en LLMs. 3. Conocer estrategias prácticas para mitigar estos errores."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovacion_dia')">
+        <div class="title">💡 Actividad 2: Innovación del Día ⏰ Tiempo: 3.5 minutos</div>
+        <div class="subtitle">Presentación de una herramienta para mejorar el razonamiento de la IA.</div>
+    </div>
+    <div id="innovacion_dia" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Innovación del Día".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hoy vamos a conocer una herramienta que ayuda a mejorar el razonamiento de la IA llamada 'Wolfram Alpha'. Esta plataforma combina procesamiento de lenguaje natural con cómputo simbólico, lo que permite a la IA razonar a través de problemas complejos de lógica o matemáticas."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (2 minutos):</strong> Proyectar Diapositiva 7 "Demostración de Wolfram Alpha".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, veamos un video que muestra cómo funciona Wolfram Alpha en acción. Presten atención a cómo la plataforma combina diversas fuentes de datos y algoritmos para resolver problemas complejos. Observen cómo la plataforma puede realizar cálculos matemáticos avanzados y ofrecer soluciones detalladas a problemas de lógica. Este video es un gran ejemplo de cómo los desarrolladores están abordando el reto del razonamiento en la IA."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 8 "Reflexión sobre Wolfram Alpha".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "¿Qué les pareció Wolfram Alpha, Genios? Esta herramienta nos muestra cómo la IA puede mejorar su capacidad de razonamiento y resolver problemas complejos. También vemos que combinar diferentes herramientas y tecnologías es clave para superar las limitaciones de la IA. Esto es importante, pues los modelos de lenguaje que hemos estado estudiando, no son una solución única a todos nuestros problemas."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- -------------------------------------------------Corte por extensión --------------------------------------------------------- -->
+<!-- -------------------------------------------------Continuación por extensión --------------------------------------------------------- -->
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('brain_gym')">
+        <div class="title">🧠 Actividad 3: Brain Gym ⏰ Tiempo: 13.5 minutos</div>
+        <div class="subtitle">Exploración de limitaciones de los LLMs sobre razonamiento, memoria y conocimiento.</div>
+    </div>
+    <div id="brain_gym" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 9 "Introducción".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hoy continuaremos explorando las limitaciones de los modelos de lenguaje (LLMs). En la clase pasada hablamos de las alucinaciones y el sesgo, hoy veremos el resto de las limitaciones más importantes que debemos conocer: el razonamiento, la memoria y el conocimiento de los LLMs. Pongan mucha atención a esta clase, porque dentro de ella se encuentra el dato curioso que usaremos para el Easter Egg."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 10 "Limited Reasoning Skills".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Una de las principales limitaciones de los LLMs es su 'capacidad de razonamiento limitada'. Aunque son capaces de entender y generar texto muy similar al humano, suelen tener problemas para resolver problemas complejos que requieren de un razonamiento paso a paso. Por ejemplo, si le pedimos a la IA que resuelva un problema de matemáticas de varios pasos, ésta podría cometer errores o confundirse durante el proceso. Aunque la IA tiene un alto conocimiento, su razonamiento es algo que aún se encuentra en desarrollo."</td>
+            </tr>
+            <tr>
+               <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 11 "Ejemplo de Razonamiento Limitado".</td>
+               <td><strong>DIÁLOGO SUGERIDO:</strong> "Veamos un ejemplo. Supongan que le preguntamos a la IA: 'Si un tren viaja a 100 km/h y necesita recorrer 500 km, ¿cuánto tiempo tardará?'. La IA podría darnos la respuesta correcta (5 horas) si solo le pedimos el tiempo total, sin embargo, si le pedimos a la IA que nos explique el proceso paso por paso, podríamos ver que la IA se confunde en los pasos y llega a la conclusión correcta de forma incorrecta. A diferencia de los humanos, la IA no puede entender y resolver problemas complejos de manera intuitiva y directa, sino que requiere seguir patrones y pasos específicos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 12 "Estrategias para Mejorar el Razonamiento".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Entonces, ¿cómo podemos mejorar el razonamiento de los LLMs? Una técnica es a través del ‘chain-of-thought prompting’ (o ‘prompt encadenado’). Esta técnica consiste en pedirle a la IA que explique su razonamiento paso a paso antes de dar una respuesta final. De esta manera, podemos guiar a la IA para que no solamente dé una respuesta, sino que también explique su proceso, y así garantizar que su razonamiento sea sólido y que no cometa errores."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 5 (1 minuto):</strong> Proyectar Diapositiva 13 "Limited Long-Term Memory".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Otra limitación importante de los LLMs es su ‘memoria a largo plazo limitada’. Cada vez que iniciamos una nueva conversación con la IA, ésta empieza desde cero y no recuerda nada de lo que hemos hablado en conversaciones previas, a menos que se lo recordemos. Es como si la IA tuviera amnesia cada vez que comenzamos a hablar con ella, y olvidara todo lo que hemos hablado anteriormente. Esto puede ser muy frustrante cuando intentamos tener una conversación larga o trabajar en un proyecto extenso con la IA."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (1 minuto):</strong> Proyectar Diapositiva 14 "Ejemplo de Memoria Limitada".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Imaginemos que estamos trabajando en un ensayo con la IA. Le pedimos a la IA que escriba la introducción, y después, en una conversación diferente, le pedimos que escriba la conclusión. La IA no recordará la información de la introducción y puede que no haya coherencia entre ambas partes del texto. Para evitar este problema, debemos de guiar a la IA recordándole las conclusiones a las que llegamos, y pidiéndole que siga las indicaciones que le dimos previamente. Esto nos muestra que, a diferencia de los humanos, la memoria de la IA es dependiente de que se lo recordemos en cada conversación."</td>
+           </tr>
+            <tr>
+                <td><strong>PASO 7 (1 minuto):</strong> Proyectar Diapositiva 15 "Estrategias para Mejorar la Memoria".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Una estrategia para lidiar con la memoria limitada es a través de los 'resúmenes iterativos'. Podemos pedirle a la IA que resuma partes importantes de la conversación o del texto, y luego usar esos resúmenes en prompts posteriores. También podemos usar un 'prompt de rol', donde le indiquemos a la IA que es parte de un equipo que debe recordar ciertos detalles. De esta manera, estaremos guiando a la IA y recordando puntos claves para que la IA siga el hilo de la conversación."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 8 (1 minuto):</strong> Proyectar Diapositiva 16 "Limited Knowledge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Otra limitación fundamental de los LLMs es su 'conocimiento limitado'. Los modelos de IA son entrenados con información hasta cierta fecha, por lo cual, no tienen conocimiento de eventos, descubrimientos o avances que han ocurrido después de ese corte. Es como si la IA se quedara congelada en el tiempo y no pudiera saber de los sucesos actuales, por lo cual es necesario complementar su conocimiento con información reciente."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 9 (1 minuto):</strong> Proyectar Diapositiva 17 "Ejemplo de Conocimiento Limitado".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Supongamos que queremos escribir un artículo sobre los últimos avances tecnológicos en México. Si le pedimos a la IA que nos hable de ésto, probablemente nos dé información desactualizada, o en el peor de los casos, invente los detalles de lo que pasó. Por esta razón, es importante que, antes de hacer esta pregunta, le proporcionemos información real y actual sobre los avances de tecnología en México. De esta forma, podremos obtener información precisa y relevante para nuestro artículo."</td>
+            </tr>
+           <tr>
+               <td><strong>PASO 10 (1 minuto):</strong> Proyectar Diapositiva 18 "Estrategias para Mejorar el Conocimiento".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Entonces, ¿cómo podemos mejorar el conocimiento de la IA? La clave es proporcionar información actualizada a través de nuestros prompts. Podemos decir a la IA: 'Aquí te doy información reciente sobre este tema, intégrala a tu respuesta'. De esta manera, estamos actuando como curadores de información y le estamos mostrando a la IA cuál es el conocimiento correcto que debe de estar usando, de esta manera podemos complementar sus conocimientos y obtener respuestas útiles."</td>
+           </tr>
+           <tr>
+                 <td><strong>PASO 11 (1 minuto):</strong> Proyectar Diapositiva 19 "Prompt Engineering y Supervisión".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Hemos visto que la IA tiene limitaciones en razonamiento, memoria y conocimiento. Por eso, el prompt engineering y la supervisión humana son indispensables al usar LLMs. Debemos ser críticos y creativos a la hora de guiar a la IA para que sus respuestas sean útiles y correctas. El objetivo no es simplemente darle un prompt y esperar a que la IA lo resuelva todo, sino que debemos trabajar en conjunto para guiar a la IA y obtener los mejores resultados posibles."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 12 (1 minuto):</strong> Proyectar Diapositiva 20 "Combinar Técnicas".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Hemos explorado diversas estrategias que nos ayudarán a mejorar el razonamiento, la memoria y el conocimiento de los LLMs. Ahora sabemos que usar chain-of-thought prompting para mejorar el razonamiento, resúmenes iterativos para manejar la memoria, y proporcionar información reciente para mejorar el conocimiento. Todas estas técnicas pueden combinarse para crear prompts más robustos y efectivos que nos ayuden a trabajar con la IA de manera más eficiente."</td>
+           </tr>
+           <tr>
+               <td><strong>PASO 13 (1 minuto):</strong> Proyectar Diapositiva 21 "Recordatorio Importante".</td>
+               <td><strong>DIÁLOGO SUGERIDO:</strong> "Como hemos visto, los LLMs no son perfectos, y dependen mucho de las estrategias que usamos para que nos den la información correcta. Con un prompt bien diseñado, podemos mejorar el razonamiento de la IA, extender su memoria y complementar sus conocimientos. Recuerden que el prompt engineering es una habilidad clave para interactuar de forma efectiva con la IA, y que no se trata de dejarle todo el trabajo a la IA, sino de trabajar juntos para obtener respuestas completas, eficientes y precisas."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 14 (0.5 minutos):</strong> Proyectar Diapositiva 22 "Revisión de Objetivos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Hemos logrado los dos primeros objetivos del día: 1. Comprendimos las limitaciones de razonamiento en los LLMs. 2. Identificamos los problemas de memoria y conocimiento en LLMs. Sigamos adelante con el Challenge para terminar con el tercer objetivo. ¡Muy bien, Genios!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🧘 Actividad 4: State Change ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Pausa activa para mejorar la concentración y relajación.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 23 "Pies en el Piso".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, vamos a realizar una actividad rápida llamada 'Pies en el Piso'. Siéntense con los pies firmemente en el piso y sientan el contacto con el suelo durante 1 minuto. Esto nos ayudará a reconectar y concentrarnos en el presente."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 24 "Cronómetro - 1 Minuto".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 25 "Reflexión sobre Pies en el Piso".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Esta actividad nos ayuda a sentirnos más conectados con el presente. Al enfocarnos en el contacto de nuestros pies con el suelo, promovemos la grounding, que nos permite estar más conscientes de nuestro entorno y mejor preparados para continuar."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">👥 Actividad 5: Team Gnius ⏰ Tiempo: 3 minutos</div>
+        <div class="subtitle">Formación de equipos para el siguiente reto.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 26 "Formación de Nuevas Parejas".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, para el reto de hoy vamos a trabajar en parejas, pero deben elegir a alguien con quien no hayan trabajado en la clase anterior. Tienen 1 minuto para encontrar a su nuevo compañero."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 27 "Cronómetro - 1 Minuto".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+           <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 28 "Recoger Magic Tablets".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que ya tienen a su compañero, les pido que un representante de cada pareja vaya a recoger su Magic Tablet. Tienen 1 minuto para hacerlo."</td>
+           </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 29 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- -------------------------------------------------Corte por extensión --------------------------------------------------------- -->
+<!-- -------------------------------------------------Continuación por extensión --------------------------------------------------------- -->
+
+<!-- Actividad 6 -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🚀 Actividad 6: Challenge ⏰ Tiempo: 23.5 minutos</div>
+        <div class="subtitle">Aplicación de técnicas para integrar datos actuales en respuestas de la IA.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 30 "Introducción al Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hoy pondremos en práctica cómo superar la limitación de conocimiento en los LLMs. Vamos a trabajar con información real y reciente que la IA no conoce y veremos cómo integrarla para obtener un análisis actualizado y preciso. Este reto está dividido en varias etapas que les guiarán paso a paso."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 31 "Explicación del Challenge".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Su tarea es elegir un evento reciente en México que sea relevante para su comunidad, ya sea una nueva regulación ambiental, un descubrimiento científico o una iniciativa económica reciente. Deberán buscar información de fuentes confiables y usar técnicas de prompting para que la IA integre esa información y genere un análisis actualizado. Este reto les mostrará cómo combinar la capacidad de la IA con su propio juicio y conocimiento."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 32 "Etapa 1: Selección del Evento".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Primero, trabajen en equipo para elegir el evento o desarrollo reciente que quieran analizar. Busquen algo que haya ocurrido en los últimos meses. Pueden enfocarse en temas ambientales, científicos, tecnológicos o económicos que sean relevantes para México. Usen la hoja de trabajo para escribir sus opciones e investigar un poco sobre ellas. Finalmente, elijan un tema que les parezca interesante y que tenga información disponible."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (3 minutos):</strong> Proyectar Diapositiva 33 "Cronómetro - 3 Minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (0.5 minutos):</strong> Proyectar Diapositiva 34 "Etapa 2: Información de la IA".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, van a interactuar con la IA usando un prompt sencillo. Pídanle que haga un resumen de los eventos recientes relacionados con el tema que eligieron. No le den ninguna información sobre el evento en particular, simplemente pidan a la IA que describa los eventos relevantes. Observen su respuesta y vean si la información está desactualizada o si falta algún detalle importante. Recuerden que el objetivo de éste paso es ver cómo se comporta la IA con conocimiento limitado."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 6 (2 minutos):</strong> Proyectar Diapositiva 35 "Cronómetro - 2 Minutos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 36 "Etapa 3: Análisis y Reflexión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Analicen la respuesta de la IA y vean si ésta reconoce su límite de conocimiento o si inventa información para rellenar los huecos. Anoten en la hoja de trabajo los detalles que estén desactualizados o faltantes. Ahora, van a planificar un nuevo prompt que permita a la IA integrar la información reciente que ustedes le proporcionarán."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 8 (3 minutos):</strong> Proyectar Diapositiva 37 "Cronómetro - 3 Minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 9 (0.5 minutos):</strong> Proyectar Diapositiva 38 "Etapa 4: Prompt Refinado".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, diseñen un prompt que le dé a la IA información actualizada y le indique cómo integrarla a su análisis. Digan a la IA que no tiene información sobre el evento, y luego proporcionen un resumen con los datos más relevantes. Recomiendo usar un prompt de rol donde le indiquen que es un experto en el tema y que debe analizar la información reciente. Incluyan una solicitud que le pida a la IA que mencione si hay información que no es capaz de verificar."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 10 (2 minutos):</strong> Proyectar Diapositiva 39 "Cronómetro - 2 Minutos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+             <tr>
+               <td><strong>PASO 11 (0.5 minutos):</strong> Proyectar Diapositiva 40 "Etapa 5: Nueva Interacción".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Introduzcan el nuevo prompt y analicen la respuesta de la IA. ¿Logró integrar la información reciente? ¿Reconoce la fuente de los datos nuevos? ¿Revisa si hay información que no puede verificar? Comparen esta respuesta con la que obtuvieron en el primer prompt y vean cómo su habilidad para hacer prompts ha influido en el resultado. Recuerden que esta es una habilidad que sólo puede perfeccionarse con la práctica."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 12 (3 minutos):</strong> Proyectar Diapositiva 41 "Cronómetro - 3 Minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 13 (0.5 minutos):</strong> Proyectar Diapositiva 42 "Etapa 6: Verificación Externa".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, verifiquen la información de la IA con fuentes externas confiables. Visiten las páginas web de las dependencias gubernamentales, los sitios de noticias o cualquier otro sitio que consideren confiable. Verifiquen que las fechas, nombres y resultados sean correctos. Con este paso estamos validando que la IA ha tomado la decisión correcta al integrar la información que le hemos dado. Recuerden que lo más importante de todo, es la validación de la información."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 14 (3 minutos):</strong> Proyectar Diapositiva 43 "Cronómetro - 3 Minutos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+               <td><strong>PASO 15 (0.5 minutos):</strong> Proyectar Diapositiva 44 "Etapa 7: Análisis Final".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, escriban su análisis final. Incluyan información nueva y datos verificados, y expliquen cómo superaron la limitación de la IA al integrar la información reciente. Pueden incluir ejemplos de los prompts que usaron y cómo guiaron a la IA en el proceso. Este paso es el resultado de todo el esfuerzo realizado durante la misión."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 16 (3 minutos):</strong> Proyectar Diapositiva 45 "Cronómetro - 3 Minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 17 (0.5 minutos):</strong> Proyectar Diapositiva 46 "Presentaciones".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Vamos a elegir a dos parejas al azar para que presenten su análisis final y compartan su experiencia. Vamos a escuchar al primer equipo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 18 (2 minutos):</strong> Proyectar Diapositiva 47 "Presentaciones".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Adelante, equipo. Compartan su análisis y los resultados de su trabajo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 19 (0.5 minutos):</strong> Proyectar Diapositiva 48 "Revisión de Objetivos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hemos completado todos nuestros objetivos: 1. Comprendimos las limitaciones de razonamiento en los LLMs. 2. Identificamos problemas de memoria y conocimiento en LLMs. 3. Conocimos estrategias prácticas para mitigar estos errores. ¡Excelente trabajo, Genios!"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 20 (0.5 minutos):</strong> Proyectar Diapositiva 49 "You've got Mon-e".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Felicidades, Genios! Se llevan Mon-e por su dedicación y creatividad al superar los límites de la IA. ¡Gran trabajo!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 7 -->
+<div id="activity-7" class="activity">
+    <div class="banner" onclick="toggleContent('easter_egg')">
+        <div class="title">🌟 Actividad 7: Easter Egg ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Un momento para gamificar el aprendizaje con una pregunta sorpresa.</div>
+    </div>
+    <div id="easter_egg" class="content">
+        <table>
+            <tr>
+                 <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 50 "Easter Egg".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, llegó el momento del Easter Egg. Les haré una pregunta sobre algo que vimos hoy. Levanten la mano si creen saber la respuesta. Seleccionaré a tres de ustedes para que me la digan al oído."</td>
+            </tr>
+            <tr>
+               <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 51 "Pregunta del Easter Egg".</td>
+               <td><strong>DIÁLOGO SUGERIDO:</strong> "Aquí va la pregunta: ¿Qué técnica usamos para guiar a la IA y que ésta explique su proceso paso a paso antes de dar una respuesta final? ¡Levanten la mano si saben la respuesta!"</td>
+            </tr>
+             <tr>
+                 <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 52 "Respuesta Correcta".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Muy bien, escuchemos las respuestas. Uno por uno vengan a decirme la respuesta al oído. Ahora, la respuesta correcta es: 'Chain-of-thought prompting'. ¡Felicidades a quienes acertaron, ganaron Mon-e extra!"</td>
+           </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 8 -->
+<div id="activity-8" class="activity">
+    <div class="banner" onclick="toggleContent('honor_the_dojo')">
+        <div class="title">🙏 Actividad 8: Honor The Dojo ⏰ Tiempo: 1 minuto</div>
+        <div class="subtitle">Cierre y organización del espacio de aprendizaje.</div>
+    </div>
+    <div id="honor_the_dojo" class="content">
+        <table>
+             <tr>
+                <td><strong>PASO 1 (1 minuto):</strong> Proyectar Diapositiva 53 "Honor The Dojo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, antes de despedirnos, vamos a honrar el espacio donde trabajamos. Cada equipo pase al frente a devolver sus Magic Tablets y asegúrense de dejar su área limpia y ordenada."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
